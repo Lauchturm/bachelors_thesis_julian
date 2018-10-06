@@ -17,7 +17,7 @@ sys.path.insert(0,parentdir)
 
 import ba_snake_js.envs.planar_snake_car
 
-
+from definitions import ROOT_DIR
 from ppo1 import policy_fn_mlp
 
 
@@ -82,7 +82,7 @@ def enjoy(env_name, seed, model_path, num_enjoys=1, plot=0):
 
 def main(actor_name, env_name, num_enjoys=1, plot=0):
     seeed = random.randint(1, 50000)  # TODO take the same for eval?
-    model_path = os.path.join(os.getcwd(), 'actors', str(actor_name), 'actor')
+    model_path = os.path.join(ROOT_DIR, 'ba_snake_js', 'agents', 'actors', str(actor_name), 'actor')
     if 'iter' in model_path:
         model_path = os.path.join(os.getcwd(), 'actors', str(actor_name), 'model')
     infos = enjoy(env_name=env_name, seed=seeed, model_path=model_path, num_enjoys=num_enjoys, plot=plot)
