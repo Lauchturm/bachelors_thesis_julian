@@ -79,12 +79,12 @@ def train_ppo1(env_name, num_timesteps, seed, model_path, logname, steps_per_bat
         # env.close()
         saver = tf.train.Saver()
         saver.save(sess, model_path)
-        print(f'saved to {model_path}')
+        print('saved to ' + model_path)
     except RuntimeError:  # VREP died or I pressed stop there
         saver = tf.train.Saver()
         saver.save(sess, model_path)
         print('VREP died')
-        print(f'saved to {model_path}')
+        print('saved to ' + model_path)
     # print("Saving model to planar_snake_continuous_model.pkl")
     # act.save("planar_snake_continuous_model.pkl")
 
@@ -120,14 +120,14 @@ def learn_on_ppo1(env_name, num_timesteps, seed, model_path, lognum, old_model_p
     # env.close()
     saver = tf.train.Saver()
     saver.save(sess, model_path)
-    print(f'saved to {model_path}')
+    print('saved to ' + model_path)
     # print("Saving model to planar_snake_continuous_model.pkl")
     # act.save("planar_snake_continuous_model.pkl")
 
 
 def main(env_name="Acmr-obstacle-more-img-v0", steps_per_batch=2048):
     seeed = random.randint(1, 50000)  # TODO fine?
-    print(f'seed: {seeed}')
+    print('seed: ' + seeed)
     num_bu = 1
     model_path = Path.cwd().joinpath('actors', env_name + '-' + str(num_bu), 'actor')
     log_name = env_name + '-' + str(num_bu)
@@ -137,7 +137,7 @@ def main(env_name="Acmr-obstacle-more-img-v0", steps_per_batch=2048):
         log_name = env_name + '-' + str(num_bu)
     if not Path(model_path).parent.exists():
         Path(model_path).parent.mkdir()
-    print(f'model path: {model_path}')
+    print('model path: ' + str(model_path))
     # num_timesteps is that high because i dont even want it to end that way but have to give a value
     train_ppo1(env_name=env_name, num_timesteps=10000000, seed=seeed, model_path=str(model_path), logname=log_name,
                steps_per_batch=steps_per_batch)
