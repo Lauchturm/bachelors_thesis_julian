@@ -1,4 +1,3 @@
-baselines
 matplotlib
 seaborn
 gym

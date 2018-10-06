@@ -10,6 +10,7 @@ Installation
 - install python3
 - install python3 modules: `pip install -r /path/to/requirements.txt`
 - tensorflow: follow the instructions on https://www.tensorflow.org/install/
+- baselines: follow the instructions on https://github.com/openai/baselines
 
 
 ## To run a learned agent (the files in "actors"):
