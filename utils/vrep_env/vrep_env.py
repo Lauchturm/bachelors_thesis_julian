@@ -53,7 +53,7 @@ class VrepEnv(gym.Env):
             ret = ret_tuple[0] if istuple else ret_tuple
             if (ret != vrep.simx_return_ok) and (ret != tolerance):
                 if ret == vrep.simx_error_timeout_flag or ret == 0x000003:  # 3 is simx_return_timeout_flag
-                    print(f"{func.__name__} had vrep timeout")
+                    print("{} had vrep timeout".format(func.__name__))
                     time.sleep(5)
                     continue  # TODO continue or break here or sth else?
                 else:
@@ -150,7 +150,7 @@ class VrepEnv(gym.Env):
         try:
             self.RAPI_rc_wrapper(vrep.simxSynchronous, self.cID, True)
         except RuntimeError as e:
-            print(f"error at start_sim: {e}\nTrying to Stop and then do it again")
+            print("error at start_sim: {}\nTrying to Stop and then do it again".format(e))
             # TODO good idea? rather wait and retry? will it still be running here?
             time.sleep(10)
             self.sim_running = True
@@ -185,7 +185,7 @@ class VrepEnv(gym.Env):
                     e = vrep.simxGetInMessageInfo(self.cID, vrep.simx_headeroffset_server_state)
                     still_running = e[1] & 1
                 except Exception as e:
-                    print(f"timeout in stop sim #{i}")
+                    print("timeout in stop sim #{}".format(i))
                 else:
                     break
             if not still_running:

@@ -1,5 +1,4 @@
-import ba_snake_js.agents.ppo1_enjoy
-from ba_snake_js.agents.ppo1_enjoy import main
+from ppo1_enjoy import main
 
 
 if __name__ == '__main__':

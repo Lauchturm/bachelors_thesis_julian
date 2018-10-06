@@ -76,8 +76,8 @@ class PlanarBase(vrep_env.VrepEnv):
     def reset(self):
         if self.this_episode_reward != 0:
             self.episodes += 1
-            print(f'episode {self.episodes} reward: {self.this_episode_reward}')
-            logging.info(f'{self.episodes}, {self.this_episode_reward}')
+            print('episode {} reward: {}'.format(self.episodes, self.this_episode_reward))
+            logging.info(self.episodes + ', ' + self.this_episode_reward)
 
         # TODO maybe reset like this again?
         # if not self.sim_running:
@@ -103,7 +103,7 @@ class PlanarBase(vrep_env.VrepEnv):
         # assert self.action_space.contains(action), "Action {} ({}) is invalid".format(action, type(action))
         if not self.action_space.contains(action):
             if verbose:
-                print(f'action {action} out of action space')
+                print(action + ' out of action space')
             pass
 
         self._make_action(action)
@@ -113,13 +113,13 @@ class PlanarBase(vrep_env.VrepEnv):
         self._move_target()
         reward = self._get_reward()
         if verbose:
-            print(f'reward: {reward}')
+            print('reward: '+reward)
 
         self.timesteps += 1
         done = self._get_episode_done()
         if done:
             actual_episode = self.episodes + 1
-            logging.info(f'{actual_episode},fail')
+            logging.info(actual_episode + ',fail')
         info = {}
         if self.gather_info:
             info = {
@@ -176,10 +176,10 @@ class PlanarBase(vrep_env.VrepEnv):
         self.this_episode_reward += delta_distance
         # print(f'reward so far: {self.this_episode_reward}')
         if verbose:
-            print(f'old_snake pos: {self.old_snake_pos} ||||| new: {self.snake_pos}')
-            print(
-                f'my distance: {self.distance}\t\tdistance from old: {distance_from_old_snake_pos}\t\t'
-                f'reward so far: {self.this_episode_reward}')
+            #print('old_snake pos: {} ||||| new: {}'.format(self.old_snake_pos, self.snake_pos))
+            #print(
+                #f'my distance: {self.distance}\t\tdistance from old: {distance_from_old_snake_pos}\t\t'
+                #f'reward so far: {self.this_episode_reward}')
             # print(f'under sqrt: {under_sqrt}')
             # print(f'under OLD sqrt: {old_under_sqrt}')
             # print(self.target_pos[0], self.target_pos[1], self.snake_pos[0], self.snake_pos[1])
@@ -314,7 +314,7 @@ class PlanarBase(vrep_env.VrepEnv):
 
     def _get_episode_done(self):
         if self.distance > 15:
-            print(f'episode {self.episodes}: lost target. resetting')
+            print('episode {}: lost target. resetting'.format(self.episodes))
             self.num_lost_target += 1
         return self.distance > 15
 

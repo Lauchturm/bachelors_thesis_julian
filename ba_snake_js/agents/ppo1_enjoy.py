@@ -10,8 +10,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import os,sys,inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(os.path.dirname(currentdir))
+sys.path.insert(0,parentdir)
+
 import ba_snake_js.envs.planar_snake_car
-from ba_snake_js.agents.ppo1 import policy_fn_mlp
+
+
+from ppo1 import policy_fn_mlp
 
 
 def enjoy(env_name, seed, model_path, num_enjoys=1, plot=0):
@@ -92,7 +99,8 @@ def plot_trajectory(infos, i):
     target_pos = infos['target_pos']
     num_lost_target = infos['num_lost_target']
 
-    print(f'lost: {num_lost_target} times of {infos["num_episodes"]}')
+    # print(f'lost: {num_lost_target} times of {infos["num_episodes"]}')
+    print('lost: {} times of {}'.format(num_lost_target, infos["num_episodes"]))
 
     # plt.axis('equal')
     # plt.plot(head_pos['x'], head_pos['y'], color='green')
@@ -107,7 +115,8 @@ def plot_trajectory(infos, i):
          }
     )
 
-    df.to_csv(f'positions_{i}.csv')  # save it for later
+    # df.to_csv(f'positions_{i}.csv')  # save it for later
+    df.to_csv('positions_{}.csv'.format(i))  # save it for later
 
     # df = pd.DataFrame(
     #     {'x': head_pos['x'],
@@ -140,8 +149,8 @@ def plot_trajectory(infos, i):
     # sns.despine()
     plt.show()
     fig = ax.get_figure()
-    fig.savefig(f'myplot_{i}.pdf', dpi=300, bbox_inches='tight')
-    fig.savefig(f'myplot_{i}.png', dpi=300, bbox_inches='tight')
+    fig.savefig('myplot_{}.pdf'.format(i), dpi=300, bbox_inches='tight')
+    fig.savefig('myplot_{}.png'.format(i), dpi=300, bbox_inches='tight')
     # df2 = pd.DataFrame(
     #     {
     #     # {'head_x': head_pos['x'],
@@ -171,7 +180,7 @@ def plot_histogram(infos, i):
          }
     )
 
-    df.to_csv(f'positions_{i}.csv')  # save it for later
+    df.to_csv('positions_{}.csv'.format(i))  # save it for later
 
     sns.set()
     sns.set_context("talk")
