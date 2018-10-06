@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/julian.schmitz/gitstuff/bachelor_thesis_snake/ba_snake_js/agents/actors/Planar-direction-v1-2/iter_500/model"
+all_model_checkpoint_paths: "/Users/julian.schmitz/gitstuff/bachelor_thesis_snake/ba_snake_js/agents/actors/Planar-direction-v1-2/iter_500/model"

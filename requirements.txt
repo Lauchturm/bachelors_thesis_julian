@@ -1,0 +1,7 @@
+baselines
+matplotlib
+seaborn
+gym
+numpy
+pandas
+-e git+https://github.com/ycps/vrep-env.git#egg=vrep_env
