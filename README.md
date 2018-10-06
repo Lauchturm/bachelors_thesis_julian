@@ -12,6 +12,7 @@ Installation
 - tensorflow: follow the instructions on https://www.tensorflow.org/install/
 - baselines: follow the instructions on https://github.com/openai/baselines
 - set env vars according to instructions on https://github.com/ycps/vrep-env
+- you may have to install python3-tk if the error of missing tkinter arises
 
 ## To run a learned agent (the files in "actors"):
 
