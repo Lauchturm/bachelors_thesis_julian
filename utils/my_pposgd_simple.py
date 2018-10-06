@@ -90,8 +90,7 @@ def learn(env, policy_fn, *,
           callback=None,  # you can do anything in the callback, since it takes locals(), globals()
           adam_epsilon=1e-5,
           schedule='constant',  # annealing for stepsize parameters (epsilon and adam)
-          pi=None, save_path=None,
-          ):
+          pi=None, save_path=None):
     # Setup losses and stuff
     # ----------------------------------------
     ob_space = env.observation_space
