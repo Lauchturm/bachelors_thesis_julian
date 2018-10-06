@@ -11,11 +11,13 @@ Installation
 - install python3 modules: `pip install -r /path/to/requirements.txt`
 - tensorflow: follow the instructions on https://www.tensorflow.org/install/
 - baselines: follow the instructions on https://github.com/openai/baselines
-
+- set env vars according to instructions on https://github.com/ycps/vrep-env
 
 ## To run a learned agent (the files in "actors"):
 
 pick one of the enjoy files in agents e.g. enjoy_direct_eval.py
+
+start v-rep
 
 `python3 enjoy_direct_eval.py`
 
