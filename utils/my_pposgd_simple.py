@@ -180,7 +180,8 @@ def learn(env, policy_fn, *,
                 saver = tf.train.Saver()
                 saver.save(tf.get_default_session(), model_path)
 
-                print(f'saved to {model_path} after {iters_so_far} iters')
+                # print(f'saved to {model_path} after {iters_so_far} iters')
+                print('saved to {} after {} iters'.format(model_path, iters_so_far))
 
         seg = seg_gen.__next__()
         add_vtarg_and_adv(seg, gamma, lam)
