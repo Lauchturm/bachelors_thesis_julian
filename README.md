@@ -33,3 +33,14 @@ mac, linux first have to enter the python interactive shell and then run tensorb
 `python3 `
 
 `tensorboard --logdir=path/to/repo/logs/logname`
+
+## Utils
+
+Contains V-REP RemoteAPI for sake of easy deployment, adapted versions of vrep_env for mac sleep fixes, adapted version
+of baselines pposgd_simple to make saving easier.
+
+## Plots & Figures
+
+data is mostly obtained in ppo1_enjoy.py and plotted in plot_csvs.py
+
+xml files are created with draw.io
